@@ -9,12 +9,13 @@ pipeline {
             }
         }
 
-        stage('Verify Project Files') {
+        stage('Verify Environment') {
             steps {
-                sh 'echo "Checking Jenkins Linux environment"'
+                sh 'echo "Checking Jenkins environment"'
                 sh 'java -version'
                 sh 'git --version'
-                sh 'pwd'
+                sh 'node --version'
+                sh 'npm --version'
                 sh 'ls -la'
             }
         }
