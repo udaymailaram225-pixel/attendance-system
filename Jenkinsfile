@@ -11,9 +11,11 @@ pipeline {
 
         stage('Verify Project Files') {
             steps {
-                bat 'node --version'
-                bat 'npm --version'
-                bat 'dir'
+                sh 'echo "Checking Jenkins Linux environment"'
+                sh 'java -version'
+                sh 'git --version'
+                sh 'pwd'
+                sh 'ls -la'
             }
         }
     }
