@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Attendance Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Student Attendance Management</h1>
+    <p>Manage students, daily attendance and monthly reports.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Add Student</h2>
+      <form id="student-form">
+        <input id="name" placeholder="Student name" required>
+        <input id="roll" placeholder="Roll number" required>
+        <input id="department" placeholder="Department" required>
+        <button type="submit">Add Student</button>
+      </form>
+      <p id="student-message" class="message"></p>
+      <h3>Student List</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Roll No.</th><th>Name</th><th>Department</th></tr></thead>
+          <tbody id="students"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Daily Attendance</h2>
+      <div class="controls">
+        <label>Date <input type="date" id="attendance-date" required></label>
+        <label>Period
+          <select id="period">
+            <option value="1">Period 1</option>
+            <option value="2">Period 2</option>
+            <option value="3">Period 3</option>
+            <option value="4">Period 4</option>
+            <option value="5">Period 5</option>
+            <option value="6">Period 6</option>
+          </select>
+        </label>
+        <button id="load-attendance">Load Students</button>
+      </div>
+      <p class="muted">Choose Present or Absent for each student, then save.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Roll No.</th><th>Name</th><th>Attendance</th></tr>
+          </thead>
+          <tbody id="attendance-rows"></tbody>
+        </table>
+      </div>
+      <button id="save-attendance">Save Attendance</button>
+      <p id="attendance-message" class="message"></p>
+    </section>
+
+    <section class="card">
+      <h2>Monthly Report</h2>
+      <div class="controls">
+        <label>Month <input type="month" id="report-month" required></label>
+        <button id="load-report">Generate Report</button>
+        <button id="export-csv" class="secondary">Export CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Roll No.</th><th>Name</th><th>Periods</th>
+              <th>Present</th><th>Absent</th><th>Percentage</th><th>Alert</th>
+            </tr>
+          </thead>
+          <tbody id="report-rows"></tbody>
+        </table>
+      </div>
+      <p class="muted">Students below 75% attendance are flagged. Percentages use recorded periods.</p>
+      <p id="report-message" class="message"></p>
+    </section>
+  </main>
+
+  <footer>Student Attendance Management System · Local demo</footer>
+  <script src="script.js"></script>
+</body>
+</html>
