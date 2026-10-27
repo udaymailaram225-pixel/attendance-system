@@ -11,12 +11,25 @@ pipeline {
 
         stage('Verify Environment') {
             steps {
-                sh 'echo "Checking Jenkins environment"'
-                sh 'java -version'
-                sh 'git --version'
                 sh 'node --version'
                 sh 'npm --version'
-                sh 'ls -la'
+                sh 'git --version'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+
+        stage('Verify Application Files') {
+            steps {
+                sh 'test -f server.js'
+                sh 'test -f db.js'
+                sh 'test -f package.json'
+                sh 'test -f public/index.html'
+                sh 'echo "Required application files are present."'
             }
         }
     }
