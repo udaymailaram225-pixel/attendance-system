@@ -13,7 +13,8 @@ pipeline {
             steps {
                 sh 'node --version'
                 sh 'npm --version'
-                sh 'git --version'
+                sh 'docker --version'
+                sh 'docker ps'
             }
         }
 
@@ -28,8 +29,14 @@ pipeline {
                 sh 'test -f server.js'
                 sh 'test -f db.js'
                 sh 'test -f package.json'
-                sh 'test -f public/index.html'
-                sh 'echo "Required application files are present."'
+                sh 'test -f Dockerfile'
+                sh 'echo "Required files verified."'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t attendance-app:jenkins .'
             }
         }
     }
